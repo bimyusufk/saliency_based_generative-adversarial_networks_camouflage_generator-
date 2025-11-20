@@ -28,8 +28,10 @@ Setiap modul dalam folder losses/ diturunkan dari torch.nn.Module untuk memastik
 #### 1. losses/saliency_loss.py (Detection Evasion)
 
 Modul ini bertanggung jawab untuk meminimalkan probabilitas deteksi visual manusia.
+
 Model Basis: SALICON (Saliency in Context).
 Alasan Teknis: Dipilih menggantikan DeepGaze untuk fase training karena arsitekturnya yang lebih ringan (efisiensi VRAM) dan gradien yang lebih stabil untuk backpropagation.
+
 Mekanisme: Menghitung Mean Saliency Score hanya pada area mask kamuflase. Generator dihukum jika area kamuflase memiliki nilai saliency tinggi.
 
 #### 2. losses/style_loss.py (Texture Blending)
@@ -37,12 +39,14 @@ Mekanisme: Menghitung Mean Saliency Score hanya pada area mask kamuflase. Genera
 Modul ini memaksa pola kamuflase untuk "melebur" secara statistik dengan latar belakang.
 Model Basis: VGG-19 (Pre-trained on ImageNet).
 Konsep Matematis: Menggunakan Gram Matrix ($G$) dari feature maps layer konvolusi.
+
 Metrik: Frobenius Norm dari selisih antara $G_{generated}$ dan $G_{background}$. Ini memastikan statistik tekstur (bukan posisi piksel) identik.
 
 #### 3. losses/smoothness_loss.py (Adversarial Defense)
 
 Modul regularisasi untuk mencegah adversarial artifacts.
 Metode: Total Variation (TV) Loss.
+
 Fungsi: Menghukum perbedaan nilai piksel tetangga yang ekstrem. Tanpa ini, GAN cenderung memproduksi high-frequency noise yang menipu model saliency tetapi terlihat tidak natural bagi mata manusia.
 
 #### 4. losses/composite_loss.py (Loss Manager)
@@ -59,4 +63,5 @@ Fleksibilitas: Memungkinkan penyetelan hyperparameter ($\alpha, \beta, \gamma$) 
 Modul ini TIDAK digunakan untuk training, melainkan sebagai validator independen.
 
 Model Basis: DeepGaze IIE.
-Peran: Bertindak sebagai "Juri Akhir". Karena DeepGaze dilatih pada data eye-tracking biologis (bukan proksi mouse seperti SALICON), skor dari modul ini memberikan validitas ilmiah yang lebih tinggi untuk klaim efektivitas kamuflase dalam paper.
+Peran: Bertindak sebagai "Juri Akhir". Karena DeepGaze dilatih pada data eye-tracking biologis (bukan 
+proksi mouse seperti SALICON), skor dari modul ini memberikan validitas ilmiah yang lebih tinggi untuk klaim efektivitas kamuflase dalam paper.
