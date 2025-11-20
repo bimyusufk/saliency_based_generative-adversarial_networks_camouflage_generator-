@@ -10,7 +10,7 @@ Cek dengan mengetik di terminal:
 Buat virtual environment agar software LabelMe dapat berjalan dengan lancar: 
 ```python -m venv venv```
 
-### 3: Aktifkan Virtual Environment
+### 3. Aktifkan Virtual Environment
 Perintah ini akan mengubah tampilan terminal Anda (biasanya ada tanda (venv) di sebelah kiri).
 
 Untuk Windows : 
