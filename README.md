@@ -1,7 +1,9 @@
 # Saliency Based Generative-Adversarial-Networks (GAN) Camouflage Generator
 ## Generator Corak Kamuflase dengan GAN (Generative-Adversarial-Networks) berbasis Model Saliency
 oleh Bim Yusuf Karang
+
 Teknik Informatika
+
 Universitas Padjadjaran
 
 Repo ini berisi penelitian tentang pengembangan model GAN (Generative-Adversarial-Networks) untuk mengenerasi corak kamuflase yang paling efektif berdasarkan input lingkungan. Penelitian ini dibagi menjadi dua tahap, tahap pembuktian kalau model prediksi atensi (saliency) dapat digunakan sebagai loss function pada GAN, lalu tahap pengembangan GAN itu sendiri. Sebelum memulai pengembangan model GAN, machine learning perlu mengetahui apakah hasil generasi sudah efektif untuk kemudian dievalusi untuk mengenerasi model yang lebih efektif. Oleh karena itu, kita membutuhkan sebuah fungsi differentiable yang dapat menilai efektivitas desain kamuflase.
@@ -21,6 +23,7 @@ Tujuan dari paper ini adalah komparasi 2 dimenasi antara model attention predict
 Tahap anotasi dan preprocessing data memiliki banyak kandidat metode. Seluruh kandidat metode ini akan dicoba sampai menghasilkan korelasi yang terbaik untuk menciptakan model yang semirip mungkin dengan hasil persepsi manusia.
 
 Mengenai tata cara anotasi dataset dapat di lihat pada [Panduan Anotasi](panduan_anotasi.md)
+
 
 
 
